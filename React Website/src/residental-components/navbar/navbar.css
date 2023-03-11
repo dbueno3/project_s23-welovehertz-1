@@ -1,0 +1,53 @@
+
+
+.navbar {
+    background-color: #5386FC;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    padding: 10px 20px 10px 25px;
+    width: 3rem;
+}
+
+.nav-title {
+    font-size: 29px;
+    color: white;
+}
+
+.nav-search {
+    text-indent: 10px;
+}
+
+.nav-darkMode {
+    width: 2.5rem;
+}
+
+.nav-profile {
+    width: 2.1rem;
+}
+
+.nav-right {
+    margin-left: auto;
+}
+
+.nav-darkMode {
+    padding-right: 15px;
+}
+
+.nav-profile {
+    padding-right: 20px;
+}
+
+.nav-search {
+    margin-left: 70px;
+    width: 27%;
+    height: 35px;
+    border-radius: 100px;
+    border: white solid 0px;
+}
+
+.nav-search::placeholder { 
+    color: #707070;
+}

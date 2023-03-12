@@ -1,11 +1,15 @@
 import React, {useState} from "react";
 import {Link} from 'react-router-dom';
-import "../styles/login.css"
+import "../styles/login.css";
+import Axios from 'axios';
 
 export default function Login (page) {
     //Captures the email and password
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
+    const [result, setResult] = useState("");
 
     //When user logins, handleSubmission will be called
     const handleSubmission = (event) => {
@@ -13,6 +17,19 @@ export default function Login (page) {
         event.preventDefault();
         console.log(email)
         console.log(password)
+
+        Axios.post('http://localhost:80/build/login', {
+          email: email,
+          password: password,
+        })
+        .then(response => {
+          setSuccess(true);
+          setError(null);
+        })
+        .catch(error => {
+          setError(error.message);
+          setSuccess(false);
+        });
     }   
 
     return (
@@ -23,8 +40,10 @@ export default function Login (page) {
                         <label for="email">Email</label>
                         <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="Email" name="email" />
                         <label for="password">Password</label>
-                        <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Password" name="password" />
-                        <button><Link to="/">LOGIN</Link></button>
+                        <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Password" name="password" required/>
+                        <button>Login</button>
+                        {error && <div>{error}</div>}
+                        {success && <div>Login Success!</div>}
                     </form>
                     <button className="register-button" ><Link to="/register">Don't Have An Account? Click Here</Link></button>
                 </div>

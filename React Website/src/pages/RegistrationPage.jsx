@@ -1,19 +1,39 @@
 import '../styles/RegistrationPage.css';
 import React, { useState } from "react";
 import {Link} from 'react-router-dom'
+import Axios from 'axios';
 
 
 export default function Register () {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
+    const [first_name, setFirstName] = useState('');
+    const [last_name, setLastName] = useState('');
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(null);
+
+    const data  = {
+        first_name:first_name,
+        last_name:last_name,
+        email:email,
+        password:password,
+    }
 
     const handleSubmission = (event) => {
         //This prevents the page from reloading and losing our current state
         event.preventDefault();
-        console.log(email)
+        console.log(data)
+        Axios.post('http://localhost:80/build/register', data)
+          .then(response => {
+            setSuccess(true);
+            setError(null);
+          })
+          .catch(error => {
+            setError(error.message);
+            setSuccess(false);
+          });
     }  
 
     return (
@@ -21,15 +41,19 @@ export default function Register () {
             <div className='register'>
                 <div className="register-form">
                     <form className="reg-inputs" onSubmit={handleSubmission}>
-                        <label for="name">Name</label>
-                        <input value={name} onChange={(event) => setName(event.target.value)} type="name" placeholder='Name' name='name'/>
+                        <label for="name">First Name</label>
+                        <input value={first_name} onChange={(event) => setFirstName(event.target.value)} type="name" placeholder='First Name' name='name'/>
+                        <label for="name">Last Name</label>
+                        <input value={last_name} onChange={(event) => setLastName(event.target.value)} type="name" placeholder='Last Name' name='name'/>
                         <label for="email">Email</label>
                         <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="Email" name="email" />
                         <label for="password">Password</label>
                         <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Password" name="password" />
                         <label for="password">Confirm Password</label>
                         <input value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} type="password" placeholder="Confirm Password" name="password" />
-                        <button><Link to="/login">Register</Link></button>
+                        <button>Register</button>
+                        {error && <div>{error}</div>}
+                        {success && <div>Account Creation Success!</div>}
                     </form>
                     <button className="create-account-button" ><Link to="/login">Have An Account? Click Here</Link></button>
                 </div>

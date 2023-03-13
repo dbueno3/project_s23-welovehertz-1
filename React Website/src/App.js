@@ -15,11 +15,11 @@ function App() {
       <Router>
           <Navbar />
           <Routes>
-            <Route path='/build' element={<Homepage />} />
-            <Route path='/build/login' element={<Login />} />
-            <Route path='/build/register' element={<Box />} />
-            <Route path='/build/resident-page' element={<ResidentPage/>} />
-            <Route path='/build/contact-us' element={<ContactUs/>} />
+            <Route path='/' element={<Homepage />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Box />} />
+            <Route path='/resident-page' element={<ResidentPage/>} />
+            <Route path='/contact-us' element={<ContactUs/>} />
             
           </Routes>
           <Footer />

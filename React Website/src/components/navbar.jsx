@@ -22,17 +22,17 @@ export default function Navbar(){
                 <div className="leftSide" id={openLinks ? "open" : "close"}>
                     <img src={HomeLogo} alt="" />
                     <div className="hiddenLinks">
-                        <Link to="/build">Home</Link>
-                        <Link to="/build/register">Register</Link>
-                        <Link to="/build/login">Login</Link>
-                        <Link to="/build/contact-us">Contact Us</Link>
+                        <Link to="/">Home</Link>
+                        <Link to="/register">Register</Link>
+                        <Link to="/login">Login</Link>
+                        <Link to="/contact-us">Contact Us</Link>
                     </div>
                 </div>
                 <div className="rightSide">
-                    <Link to="/build">Home</Link>
-                    <Link to="/build/register">Register</Link>
-                    <Link to="/build/login">Login</Link>
-                    <Link to="/build/contact-us">Contact Us</Link>
+                        <Link to="/">Home</Link>
+                        <Link to="/register">Register</Link>
+                        <Link to="login">Login</Link>
+                        <Link to="/contact-us">Contact Us</Link>
                     <Button onClick={toggleNavbar}><ReorderIcon/></Button>
                 </div>
             </div>

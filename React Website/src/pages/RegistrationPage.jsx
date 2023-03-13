@@ -25,7 +25,7 @@ export default function Register () {
         //This prevents the page from reloading and losing our current state
         event.preventDefault();
         console.log(data)
-        Axios.post('http://localhost:80/build/register', data)
+        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/register', data)
           .then(response => {
             setSuccess(true);
             setError(null);
@@ -55,7 +55,7 @@ export default function Register () {
                         {error && <div>{error}</div>}
                         {success && <div>Account Creation Success!</div>}
                     </form>
-                    <button className="create-account-button" ><Link to="/login">Have An Account? Click Here</Link></button>
+                    <button className="create-account-button" ><Link to="https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/login">Have An Account? Click Here</Link></button>
                 </div>
             </div>  
         </>  

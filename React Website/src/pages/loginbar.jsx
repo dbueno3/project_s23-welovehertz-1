@@ -9,7 +9,6 @@ export default function Login (page) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
-    const [result, setResult] = useState("");
 
     //When user logins, handleSubmission will be called
     const handleSubmission = (event) => {

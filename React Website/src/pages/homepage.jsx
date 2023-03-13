@@ -9,7 +9,7 @@ export default function Homepage() {
             <div className='headerContainer' >
                 <h1>HOUSE FINDER</h1>
                 <p> Easily Figure Out Where To Live</p>
-                <Link to ="/resident-page"><button>Click Here</button></Link>
+                <Link to ="/build/resident-page"><button>Click Here</button></Link>
             </div>
         </div>
     )

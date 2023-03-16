@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
 import ResidentPage from './pages/residential-page';
 import ContactUs from './pages/contact';
+import ProfilePage from './pages/profilePage';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
             <Route path='/register' element={<Box />} />
             <Route path='/resident-page' element={<ResidentPage/>} />
             <Route path='/contact-us' element={<ContactUs/>} />
-            
+            <Route path='/profile' element={<ProfilePage/>} />
           </Routes>
           <Footer />
       </Router>

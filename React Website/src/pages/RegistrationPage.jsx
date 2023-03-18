@@ -2,7 +2,7 @@ import '../styles/RegistrationPage.css';
 import React, { useState } from "react";
 import {Link} from 'react-router-dom'
 import Axios from 'axios';
-
+//Registration Page
 
 export default function Register () {
 

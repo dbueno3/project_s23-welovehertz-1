@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/profile.css'
 import pfp from '../pictures/pfp.png'
 
-//User Profile Page
+//This is the User Profile Page
 export default function profilePage () {
     return (
         <div className='profile'>

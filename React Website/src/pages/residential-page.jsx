@@ -4,7 +4,7 @@ import Header from '../residental-components/header/Header'
 import Ratings from '../residental-components/ratings/Ratings'
 import UserRatings from '../residental-components/userRatings/UserRatings'
 
-//Residential Page
+//Residential Page Static
 export default function ResidentPage() {
     return (
         <div class="container">

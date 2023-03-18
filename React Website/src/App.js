@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
 import ResidentPage from './pages/residential-page';
 import ContactUs from './pages/contact';
+import ProfilePage from './pages/profilePage';
 
 function App() {
   return (

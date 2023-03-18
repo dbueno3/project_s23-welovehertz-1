@@ -27,4 +27,5 @@ switch($method) {
 }
 
 //PHP Code For Registration 
+//Encrypted Password
 ?>

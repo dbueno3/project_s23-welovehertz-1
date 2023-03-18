@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import BackGround from '../pictures/background.jpg'
 import '../styles/homepage.css'
-
+// 
 export default function Homepage() {
     return (
         <div className='home'  style={{backgroundImage: `url(${BackGround})`}}>

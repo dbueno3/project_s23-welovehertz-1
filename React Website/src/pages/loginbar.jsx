@@ -17,7 +17,7 @@ export default function Login (page) {
         console.log(email)
         console.log(password)
 
-        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/login', {
+        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/login.php', {
           email: email,
           password: password,
         })

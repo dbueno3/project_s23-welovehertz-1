@@ -27,4 +27,4 @@ switch($method) {
 }
 
 
-?>
+?>;

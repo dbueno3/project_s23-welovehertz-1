@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
@@ -25,5 +24,5 @@ switch($method) {
         echo json_encode($response);
         break;
 }
-?>
->>>>>>> Stashed changes
+?>;
+

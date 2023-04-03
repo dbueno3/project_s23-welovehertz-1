@@ -5,12 +5,12 @@ import Header from '../residental-components/header/Header'
 import Ratings from '../residental-components/ratings/Ratings'
 import UserRatings from '../residental-components/userRatings/UserRatings'
 import {useParams} from 'react-router-dom'
-//Residential Page Static
+
 export default function ResidentPage() {
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
     let { id } = useParams();
-    console.log("id: " + id)
+    console.log("id: " + id);
 
     useEffect(() => {
         Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/residential.php', {

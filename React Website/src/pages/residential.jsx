@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { Navigate } from 'react-router-dom';
 
-export default function Residential() {
-    const [residence, setResi] = useState();
-    const [location, setLocation] = useState();
-    useEffect(() =>{
-        getInfo();
-    });
 
-    function getInfo(){
-        Axios.get('/CSE442-542/2023-Spring/cse-442h/backend/resi.php')
+export default function Res () {
+    const [info, setInfo] = useState([]);
+
+    useEffect(() => {
+        Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/resi.php')
         .then(function(response){
-            const resi = JSON.parse(response.data.substring(3, response.data.length-2))
-            setResi(resi.residence)
-            setLocation(resi.location)
+            //const resi = JSON.parse(response.data.substring(3, response.data.length-2))
+            setInfo(JSON.parse(response.data.substring(1, response.data.length-1)))
+            //console.log(response.data.substring(1, response.data.length-1))
         })
-    }
+    }, []);
+
     return(
-        <div>
-            <p>Residence : {residence}</p>
-            <p>Address : {location}</p>
-        </div>
-    )
+        <>
+            {info.map((i, key) =>
+            <div key={key}>
+                <ul>{i.residence}</ul>
+                <ul>{i.location}</ul>
+                <ul>${i.singles}</ul>
+            </div>
+            )}
+        </>
+    );
 }

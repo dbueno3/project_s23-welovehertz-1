@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import "../styles/login.css";
 import Axios from 'axios';
 
-export default function Login (page) {
+export default function Login () {
     //Captures the email and password
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

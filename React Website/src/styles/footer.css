@@ -7,7 +7,7 @@
     align-items: center;
     flex-direction: column;
     padding-top: 10px;
-    position: fixed;
+    position: bottom;
     bottom: 0;
   }
   

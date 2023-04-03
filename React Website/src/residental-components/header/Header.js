@@ -5,14 +5,14 @@ import slideshowTwo from "./images/header-slideshow-image2.png"
 import slideshowThree from "./images/header-slideshow-image3.png"
 import "./header.css"
 
-export default function Header() {
+export default function Header( props ) {
     return (
         <div className="header">
-            <h1 className="header-title">Villas on Rensch</h1>
+            <h1 className="header-title">{props.title}</h1>
             <div className="header-description">
                 <img className="header-rating-img" src={ratingStarImg} alt=""/>
                 <span className="header-rating">4.9</span>
-                <span>100 Villas Dr E, Buffalo, NY 14228</span>
+                <span>{props.location}</span>
             </div>
             <div>
                 <img className="header-img header-img-one" src={slideshowOne} alt="slideshowImg1" />

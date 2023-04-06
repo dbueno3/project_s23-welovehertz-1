@@ -10,9 +10,17 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
   case "POST":
     $user = json_decode(file_get_contents('php://input'));
-    echo $user->first_name; 
+    $sql = "SELECT COUNT(*) FROM users WHERE email = :email";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':email', $user->email);
+    $stmt->execute();
+    $count = $stmt->fetchColumn();
     // Validate input fields
     $errors = [];
+
+    if ($count > 0) {
+      $errors['email'] = 'Email address already exists';
+    }
     if (!preg_match('/^[a-zA-Z ]+$/', $user->first_name)) {
       $errors['first_name'] = 'First name should only contain letters and spaces';
     }
@@ -28,20 +36,18 @@ switch ($method) {
     if ($user->password !== $user->confirmPassword) {
       $errors['confirm_password'] = 'Passwords do not match';
     }
-
     if (count($errors) > 0) {
       $response = ['status' => 0, 'message' => 'Input validation failed', 'errors' => $errors];
       echo json_encode($response);
       exit();
     } else {
-      $hashed_pass = password_hash($user->password, PASSWORD_DEFAULT);
       $sql = "INSERT INTO users (first_name, last_name, email, password) VALUES (:first, :last, :email, :password)";
       $param = $conn->prepare($sql);
       $param->bindParam(':first', $user->first_name);
       $param->bindParam(':last', $user->last_name);
       $param->bindParam(':email', $user->email);
-      $param->bindParam(':password', $hashed_pass);
-      if (count($errors) == 0 && $param->execute()) {
+      $param->bindParam(':password', password_hash($user->password, PASSWORD_DEFAULT));
+      if ($param->execute()) {
         $response = ['status' => 1, 'message' => 'Record Created'];
       } else {
         $response = ['status' => 0, 'message' => 'Record Failed to Create'];
@@ -49,5 +55,4 @@ switch ($method) {
       echo json_encode($response);
       break;
     }
-} 
-?>
+}

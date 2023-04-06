@@ -6,44 +6,43 @@ include 'config.php';
 $db = new DbConn;
 $conn = $db->connect();
 
-session_start(); 
+session_start();
 
-function getUser($conn, $username, $password){ 
-    $sql = "SELECT * FROM users WHERE username=?";
-    $prep = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($prep, $sql)){return false;}
-    else{
-        // execute statement 
-        mysqli_stmt_bind_param($prep, "s", $username);
-        mysqli_stmt_execute($prep);
-        // Get result set from statement 
-        $result = mysqli_stmt_get_result($prep);
-        if ($row = mysqli_fetch_assoc($result)){
-            if(password_verify($password, $row['password'])){
-                return $row;
-            } else{ 
-                return false ; 
-            }
-        }else{
-            return false; 
+function getUser($con, $email, $password) {
+    $sql = "SELECT * FROM users WHERE email='$email'";
+    $stmt = $con->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($result) {
+        $hashedPW = $result[0]['password'];
+        // echo $hashedPW . "\n";
+        if (password_verify($password, $hashedPW)) {
+	    echo "Account Verified" . "\n";
+            return 1;
+        } else {
+	    echo "Wrong Password" . "\n";
+            return 0;
         }
-    } 
-
-}
-
-if(isset($_POST["username"])){
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    $user = getUser($conn, $username, $password);
-    if ($user){ 
-        $_SESSION['error']= "Username and password did not match";
-        echo '<script>alert("', $_SESSION['error'], '"); window.location.href ="reg.php"; </script>'; 
-        exit();
+    } else {
+	echo "No Account With That Email" . "\n";
+        return 0;
     }
-    $_SESSION['username'] = $username; 
-    
-
-    exit();
 }
+
+$method = $_SERVER['REQUEST_METHOD'];
+switch ($method) {
+    case "POST":
+        $user = json_decode(file_get_contents('php://input'));
+        $email = $user->email;
+        $password = $user->password;
+        $user = getUser($conn, $email, $password);
+        if ($user == 0) {
+            $_SESSION['error'] = "Username and password did not match";
+            echo '<script>alert("', $_SESSION['error'], '"); window.location.href ="reg.php"; </script>';
+            exit();
+        }
+        $_SESSION['email'] = $email;
+        exit();
+}
+
 ?>;

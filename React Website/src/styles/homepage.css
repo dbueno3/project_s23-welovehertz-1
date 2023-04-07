@@ -12,7 +12,6 @@
 }
 
 .headerContainer {
-  width: auto;
   margin-left: 50px;
 }
 
@@ -108,7 +107,8 @@
   cursor: pointer;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
-  width: calc(33.3333% - 1rem);
+  width: 20%;
+  margin-bottom: 30px;
 }
 
 .listing-card:hover {

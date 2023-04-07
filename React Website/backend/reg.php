@@ -5,6 +5,7 @@ header("Access-Control-Allow-Headers: *");
 include 'config.php';
 $db = new DbConn;
 $conn = $db->connect();
+
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
   case "POST":
@@ -16,38 +17,50 @@ switch ($method) {
     $count = $stmt->fetchColumn();
     // Validate input fields
     $errors = [];
+
     if ($count > 0) {
-      $errors['email'][] = 'Email address already exists';
+      $errors['email'] = 'Email address already exists';
     }
     if (!preg_match('/^[a-zA-Z ]+$/', $user->first_name)) {
-      $errors['first_name'][] = 'First name should only contain letters and spaces';
+      $errors['first_name'] = 'First name should only contain letters and spaces';
     }
     if (!preg_match('/^[a-zA-Z ]+$/', $user->last_name)) {
-      $errors['last_name'][] = 'Last name should only contain letters and spaces';
+      $errors['last_name'] = 'Last name should only contain letters and spaces';
     }
     if (!filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
-      $errors['email'][] = 'Invalid email address';
+      $errors['email'] = 'Invalid email address';
+    }
+<<<<<<< Updated upstream
+    if (strlen($user->password) < 8) {
+      $errors['password'] = 'Password should be at least 8 characters long';
+    }
+    if ($user->password !== $user->confirmPassword) {
+      $errors['confirm_password'] = 'Passwords do not match';
+=======
+    if ($user->password !== $user->confirm_password) {
+      $errors['confirm_password'][] = 'Passwords do not match';
+>>>>>>> Stashed changes
     }
     if (strlen($user->password) < 8) {
       $errors['password'][] = 'Password should be at least 8 characters long';
-    }
-    if ($user->password !== $user->confirm_password) {
-      $errors['confirm_password'][] = 'Passwords do not match';
     }
     if (count($errors) > 0) {
       $response = ['status' => 0, 'message' => 'Input validation failed', 'errors' => $errors];
       echo json_encode($response);
       exit();
     } else {
-      $sql = "INSERT INTO users (first_name, last_name, email, password) VALUES (:first, :last, :email, :password)";
+      $sql = "INSERT INTO users (first_name, last_name, email, password, favorite_list) VALUES (:first, :last, :email, :password, 1)";
       $param = $conn->prepare($sql);
       $param->bindParam(':first', $user->first_name);
       $param->bindParam(':last', $user->last_name);
       $param->bindParam(':email', $user->email);
+<<<<<<< Updated upstream
+      $param->bindParam(':password', password_hash($user->password, PASSWORD_DEFAULT));
+=======
       $hashed_password = password_hash($user->password, PASSWORD_DEFAULT);
       $param->bindParam(':password', $hashed_password);
-      $r = $param->execute();
-      if ($r) {
+>>>>>>> Stashed changes
+      if ($param->execute()) {
         $response = ['status' => 1, 'message' => 'Record Created'];
       } else {
         $response = ['status' => 0, 'message' => 'Record Failed to Create'];

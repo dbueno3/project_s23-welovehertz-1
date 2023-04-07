@@ -17,6 +17,7 @@
 
 
 .register-form input {
+    width:200px;
     text-decoration: none;
     padding: 10px;
     border-radius: 5px;
@@ -31,6 +32,8 @@
 }
 
 .reg-inputs button {
+    margin-left: 54px;
+    width: 100px;
     margin-top: 15px;
     border: none;
     background-color: white;

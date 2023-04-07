@@ -70,6 +70,7 @@ export default function Register() {
                 console.log(response_json.status);
                 if (response_json.status === 0) {
                     const error = response_json.errors;
+<<<<<<< Updated upstream
                     for (const field in error) {
                         if (field === 'email') {
                             setErrors({ ...errors, email: response_json.errors.email });
@@ -82,7 +83,13 @@ export default function Register() {
                         } else if(field === 'confirm_Password'){
                             setErrors({ ...errors, confirmPassword: response_json.errors.confirmPassword });
                         }
+=======
+                    let allErrors = {};
+                    for (const field in error) {
+                        allErrors[field] = error[field];
+>>>>>>> Stashed changes
                     }
+                    setErrors({ ...allErrors, submit: 'Unable to create account, please check all fields' });
                     setSuccess(false);
                 } else {
                     setSuccess(true);
@@ -104,6 +111,7 @@ export default function Register() {
             });
     }
 
+
     return (
         <>
             <div className='register'>
@@ -111,6 +119,10 @@ export default function Register() {
                     <form className="reg-inputs" onSubmit={handleSubmission}>
                         <label htmlFor="first_name">First Name</label>{errors.first_name && <div className="error-message">{errors.first_name}</div>}
                         <input value={first_name} onChange={(event) => setFirstName(event.target.value)} type="name" placeholder='First Name' name='first_name' required />
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                         <label htmlFor="last_name">Last Name</label>{errors.last_name && <div className="error-message">{errors.last_name}</div>}
                         <input value={last_name} onChange={(event) => setLastName(event.target.value)} type="name" placeholder='Last Name' name='last_name' required />
 
@@ -120,10 +132,17 @@ export default function Register() {
                         <label htmlFor="password">Password</label>{errors.password && <div className="error-message">{errors.password}</div>}
                         <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Password" name="password" required />
 
+<<<<<<< Updated upstream
                         <label htmlFor="confirmPassword">Confirm Password</label>{errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>}
                         <input value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} type="password" placeholder="Confirm Password" name="confirmPassword" required />
 
                         <button>Register</button>
+=======
+                        <label htmlFor="confirm_password">Confirm Password</label>{errors.confirm_password && <div className="error-message">{errors.confirm_password}</div>}
+                        <input value={confirm_password} onChange={(event) => setConfirmPassword(event.target.value)} type="password" placeholder="Confirm Password" name="confirmPassword" required />
+
+                        <button >Register</button>
+>>>>>>> Stashed changes
                         {errors.submit && !success && <div className="error-message">{errors.submit}</div>}
                         {success && <div>Account Creation Success!</div>}
                     </form>

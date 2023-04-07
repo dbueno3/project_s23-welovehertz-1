@@ -30,16 +30,8 @@ switch ($method) {
     if (!filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
       $errors['email'] = 'Invalid email address';
     }
-<<<<<<< Updated upstream
-    if (strlen($user->password) < 8) {
-      $errors['password'] = 'Password should be at least 8 characters long';
-    }
-    if ($user->password !== $user->confirmPassword) {
-      $errors['confirm_password'] = 'Passwords do not match';
-=======
     if ($user->password !== $user->confirm_password) {
       $errors['confirm_password'][] = 'Passwords do not match';
->>>>>>> Stashed changes
     }
     if (strlen($user->password) < 8) {
       $errors['password'][] = 'Password should be at least 8 characters long';
@@ -54,12 +46,8 @@ switch ($method) {
       $param->bindParam(':first', $user->first_name);
       $param->bindParam(':last', $user->last_name);
       $param->bindParam(':email', $user->email);
-<<<<<<< Updated upstream
-      $param->bindParam(':password', password_hash($user->password, PASSWORD_DEFAULT));
-=======
       $hashed_password = password_hash($user->password, PASSWORD_DEFAULT);
       $param->bindParam(':password', $hashed_password);
->>>>>>> Stashed changes
       if ($param->execute()) {
         $response = ['status' => 1, 'message' => 'Record Created'];
       } else {

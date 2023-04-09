@@ -24,7 +24,8 @@ switch ($method) {
             $data3 = $param3->fetch(PDO::FETCH_ASSOC);
             array_push($result_array, $data3['residence']);
         }
-        $data['favorite_list'] = $result_array;
+        $data['favorite_list'] = explode(',', $data['favorite_list']);
+        $data['favorite_name_list'] = $result_array;
         echo json_encode($data);
         break;
 }

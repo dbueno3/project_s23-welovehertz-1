@@ -1,7 +1,7 @@
 import '../styles/profile.css';
 import pfp from '../pictures/pfp.png';
 import React, {useEffect, useState} from "react";
-import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 
 //This is the User Profile Page
@@ -9,7 +9,7 @@ export default function ProfilePage () {
     const [firstName, setFirstName] = useState('ERROR');
     const [lastName, setLastName] = useState('ERROR');
     const [email, setEmail] = useState('ERROR');
-    const [favoriteList, setFavoriteList] = useState(['ERROR']);
+    const [favoriteList, setFavoriteList] = useState([]);
 
     useEffect(() => {
         Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/profile.php', {
@@ -17,14 +17,27 @@ export default function ProfilePage () {
         })
         .then(function (response) {
             console.log(response.data)
-            console.log(response.data.substring(1, response.data.length - 1))
             const profileData = JSON.parse(response.data.substring(1, response.data.length-1))
             setFirstName(profileData.first_name)
             setLastName(profileData.last_name)
             setEmail(profileData.email)
-            setFavoriteList(profileData.favorite_list)
+            for (let i = 0; i < profileData.favorite_list.length; i++) {
+                if (profileData.favorite_list == "") { break; }
+                setFavoriteList(prevFavoriteList => [...prevFavoriteList, {
+                        id: profileData.favorite_list[i], 
+                        name: profileData.favorite_name_list[i], 
+                        img: "https://www.bhg.com/thmb/H9VV9JNnKl-H1faFXnPlQfNprYw=/1799x0/filters:no_upscale():strip_icc()/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg",
+                }])
+            }
         })
     }, []);
+
+    const navigate = useNavigate();
+
+    const handleListingClick = (id) => {
+        console.log(id);
+        navigate(`/CSE442-542/2023-Spring/cse-442h/${id}`)
+    }
 
     return (
         <div className='profile'>
@@ -46,9 +59,15 @@ export default function ProfilePage () {
                     </div>
                 </div>
             </div>
-            <div className="profile-container-1">
-                <h2 className="profile-profile-title">Favorite List</h2>
-                {favoriteList}
+            <h2 className="profile-profile-title">Favorite Listing</h2>
+            <div className='listings'>
+                {favoriteList.length == 0 ? <div>You have no favorited housing options</div> : 
+                favoriteList.map(favList => (
+                    <div key={favList.id} className='listing-card' onClick={() => handleListingClick(favList.id)}>
+                        <img src={favList.img} alt={favList.name} />
+                        <h2>{favList.name}</h2>
+                    </div>
+                ))}
             </div>
         </div>
     );

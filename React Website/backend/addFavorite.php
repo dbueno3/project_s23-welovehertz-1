@@ -27,6 +27,7 @@ switch ($method) {
                 echo "its in the array";
                 $data_remove = array(strval($resi_id));
                 $result = implode(',', array_diff($data_array, $data_remove));
+                echo $result;
             } else {
                 echo "Its not in the array";
                 array_push($data_array, strval($resi_id));

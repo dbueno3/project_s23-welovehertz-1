@@ -11,6 +11,7 @@
 .header-title {
     margin-left: 30px;
     margin-bottom: 5px;
+    display: inline;
 }
 
 .header-description {
@@ -37,4 +38,28 @@
     display: inline-block;
     color: #8A8A8A;
     font-size: 25px;
+}
+
+.header-button  {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: center;
+    background-color: #121619;
+    height: 40px;
+    width: 170px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    float: right;
+    margin-right: 50px;
+}
+
+.header-button:hover  {
+    color: gold;
+    background-color: #212121;
+}
+
+.header {
+    margin-top: 20px;
 }

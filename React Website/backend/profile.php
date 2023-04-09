@@ -12,8 +12,20 @@ switch ($method) {
         $sql = "SELECT * FROM users WHERE id=1";
         $param = $conn->prepare($sql);
         $param->execute();
-        $data = $param->fetchAll(PDO::FETCH_ASSOC);
+        $data = $param->fetch(PDO::FETCH_ASSOC);
+        $favListStr = $data['favorite_list'];
+        $favListArr = explode(',', $favListStr);
+        $result_array = array();
+        for ($i = 0; $i < count($favListArr); $i++) {
+            $curr_id = intval($favListArr[$i]);
+            $sql3 = "SELECT residence FROM Residences WHERE ID=" . $curr_id;
+            $param3 = $conn->prepare($sql3);
+            $param3->execute();
+            $data3 = $param3->fetch(PDO::FETCH_ASSOC);
+            array_push($result_array, $data3['residence']);
+        }
+        $data['favorite_list'] = $result_array;
         echo json_encode($data);
         break;
-}na
+}
 ?>;

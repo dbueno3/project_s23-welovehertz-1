@@ -9,18 +9,22 @@ export default function ProfilePage () {
     const [firstName, setFirstName] = useState('ERROR');
     const [lastName, setLastName] = useState('ERROR');
     const [email, setEmail] = useState('ERROR');
+    const [favoriteList, setFavoriteList] = useState(['ERROR']);
 
     useEffect(() => {
         Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/profile.php', {
+
         })
         .then(function (response) {
-            const profileData = JSON.parse(response.data.substring(3, response.data.length-2))
+            console.log(response.data)
+            console.log(response.data.substring(1, response.data.length - 1))
+            const profileData = JSON.parse(response.data.substring(1, response.data.length-1))
             setFirstName(profileData.first_name)
             setLastName(profileData.last_name)
             setEmail(profileData.email)
-
+            setFavoriteList(profileData.favorite_list)
         })
-    });
+    }, []);
 
     return (
         <div className='profile'>
@@ -41,6 +45,10 @@ export default function ProfilePage () {
                         <span className="profile-text">{email}</span>
                     </div>
                 </div>
+            </div>
+            <div className="profile-container-1">
+                <h2 className="profile-profile-title">Favorite List</h2>
+                {favoriteList}
             </div>
         </div>
     );

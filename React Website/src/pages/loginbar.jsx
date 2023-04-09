@@ -9,7 +9,7 @@ export default function Login () {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
-
+    const [redirect, setRedirectToHome] = useState(false)
     //When user logins, handleSubmission will be called
     const handleSubmission = (event) => {
         //This prevents the page from reloading and losing our current state
@@ -30,6 +30,20 @@ export default function Login () {
           setSuccess(false);
         });
     }   
+    const buttonStyle = {
+        backgroundColor: 'beige',
+        border: 'none',
+        color:'white',
+        padding: '10px 20px',
+        textAlign: 'center',
+        textDecoration: 'none',
+        display: 'inline-block',
+        fontSize: '16px',
+        margin: '4px 2px',
+        cursor: 'pointer',
+        TransitionEvent: '0.3x',
+        position: "relative"
+    };
 
     return (
         <>
@@ -43,6 +57,8 @@ export default function Login () {
                         <button>Login</button>
                         {error && <div>{error}</div>}
                         {success && <div>Login Success!</div>}
+                        <br></br>
+                        <button className="redirect-to-home" style={buttonStyle}> <Link to="/CSE442-542/2023-Spring/cse-442h/">BACK TO THE HOMEPAGE</Link></button>
                     </form>
                     <button className="register-button" ><Link to="/register">Don't Have An Account? Click Here</Link></button>
                 </div>

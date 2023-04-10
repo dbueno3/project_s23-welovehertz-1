@@ -23,7 +23,7 @@ export default function ResidentPage() {
     console.log(id)
 
     useEffect(() => {
-        if (id < 1 || id > 11){
+        if (id < 1 || id > 11 || isNaN(id)){
             navigate(`/CSE442-542/2023-Spring/cse-442h/contact-us`)
         }
         Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/residential.php', {

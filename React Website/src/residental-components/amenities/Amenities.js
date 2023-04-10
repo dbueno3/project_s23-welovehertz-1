@@ -11,7 +11,7 @@ export default function Amenities(props) {
     const amenity = amenities.map((key) =>
         <> 
         <ul className="amenities-type" key={key}>{key}</ul>
-        <img className="amenities-icon" src={require("./images/"+key+".png")} alt={key}/>
+        <img className="amenities-icon" src={require("./images/"+key.toLowerCase()+".png")} alt={key}/>
         </>
     ) 
 

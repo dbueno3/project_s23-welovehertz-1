@@ -14,8 +14,8 @@ export default function Login () {
     const handleSubmission = (event) => {
         //This prevents the page from reloading and losing our current state
         event.preventDefault();
-        console.log(email)
-        console.log(password)
+        // console.log(email)
+        // console.log(password)
 
         Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/login.php', {
           email: email,

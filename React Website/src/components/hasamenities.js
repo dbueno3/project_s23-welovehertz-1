@@ -1,22 +1,22 @@
 export default function ResiAmenities(props){
     var dic = {}
     if (props["pool"] !=="0"){
-        dic["pool"] = props["pool"]
+        dic["Pool"] = props["pool"]
     }
     if (props["laundry"] !== "0"){
-        dic["laundry"] = props["laundry"]
+        dic["Laundry"] = props["laundry"]
     }
     if (props["private bathroom"] !== "0"){
-        dic["bathroom"] = props["private bathroom"]
+        dic["Bathroom"] = props["private bathroom"]
     }
     if (props["parking"] !== "0"){
-        dic["parking"] = props["parking"]
+        dic["Parking"] = props["parking"]
     }
     if (props["private kitchen"] !== "0"){
-        dic["kitchen"] = props["private kitchen"]
+        dic["Kitchen"] = props["private kitchen"]
     }
     if (props["gym"] !== "0"){
-        dic["gym"] = props["gym"]
+        dic["Gym"] = props["gym"]
     }
     return dic
 }

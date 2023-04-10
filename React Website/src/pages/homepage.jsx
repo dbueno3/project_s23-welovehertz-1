@@ -17,8 +17,11 @@ export default function Homepage() {
     const navigate = useNavigate();
 
     const handleListingClick = (id) => {
-        console.log(id);
-        navigate(`/CSE442-542/2023-Spring/cse-442h/${id}`)
+        if (0 < id < 12){
+            navigate(`/CSE442-542/2023-Spring/cse-442h/${id}`)
+        }else{
+            navigate(`/CSE442-542/2023-Spring/cse-442h/`)
+        }
     }
 
     return (

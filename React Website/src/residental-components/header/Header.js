@@ -4,8 +4,15 @@ import slideshowOne from "./images/header-slideshow-image1.png"
 import slideshowTwo from "./images/header-slideshow-image2.png"
 import slideshowThree from "./images/header-slideshow-image3.png"
 import "./header.css"
+import { Link } from "react-router-dom";
 
 export default function Header( props ) {
+    var prices = Object.entries(props.prices);
+    const price = prices.map(([key,value]) =>
+        <ul key={key}>{key} : ${value.slice(0,value.length-3)+ ","+ value.slice(value.length-3)}</ul>
+    )
+    // console.log(price)
+
     return (
         <div className="header">
             <h1 className="header-title">{props.title}</h1>
@@ -20,8 +27,8 @@ export default function Header( props ) {
                 <img className="header-img" src={slideshowThree} alt="slideshowImg3" />
             </div>
             <div>
-                <h2 className="header-price-title">PRICE</h2>
-                <h3 className="header-price">$800 month</h3>
+                <h2 className="header-price-title">Dorming Options</h2>
+                <span className="header-price">{price}</span>
             </div>
         </div>
     )

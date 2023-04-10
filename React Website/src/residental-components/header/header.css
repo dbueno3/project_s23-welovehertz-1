@@ -2,9 +2,11 @@
     width: 28rem;
     height: 20rem;
     padding-right: 10px;
+    border-radius: 50px;
 }
 
 .header-img-one {
+    border-radius: 50px;
     margin-left: 40px;
 }
 
@@ -27,14 +29,16 @@
 }
 
 .header-price-title {
-    display: inline-block;
+    display: inline-flex;
     padding-left: 40px;
     padding-right: 40px;
     font-size: 30px;
 }
 
 .header-price {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #8A8A8A;
     font-size: 25px;
 }

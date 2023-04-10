@@ -4,7 +4,7 @@ import '../styles/contact.css'
 export default function ContactUs () {
     return (
         <div className='contact'>
-            <p>You're on your own if you are having trouble :D</p>
+            <p>Looks like you encountered trouble, your on your own or go back to the homepage and try again ◝(ᵔᵕᵔ)◜</p>
         </div>
     );
 }

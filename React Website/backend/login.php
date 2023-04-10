@@ -15,12 +15,15 @@ function getUser($con, $email, $password) {
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if ($result) {
         $hashedPW = $result[0]['password'];
-        // echo $hashedPW . "\n";
         if (password_verify($password, $hashedPW)) {
-	    echo "Account Verified" . "\n";
+            //Cookie is for user and the value is the email. Cookie expires in one day (86400 == 1 day) 
+            //and is accessable across the whole website
+            $cookie_name = $result[0]['first_name'];
+            setcookie($cookie_name, $result[0]['email'], time() + 86400, "/");
+	        echo "Account Verified" . "\n";
             return 1;
         } else {
-	    echo "Wrong Password" . "\n";
+	        echo "Wrong Password" . "\n";
             return 0;
         }
     } else {
@@ -42,7 +45,16 @@ switch ($method) {
             exit();
         }
         $_SESSION['email'] = $email;
+
         exit();
 }
 
 ?>;
+
+<!-- IGNORE THIS BELOW -->
+<!-- if(!isset($_COOKIE[$cookie_name])) {
+                echo "Cookie named '" . $cookie_name . "' is not set!";
+            } else {
+                echo "Cookie '" . $cookie_name . "' is set!<br>";
+                echo "Value is: " . $_COOKIE[$cookie_name];
+            } -->

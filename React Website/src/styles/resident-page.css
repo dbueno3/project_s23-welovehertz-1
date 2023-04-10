@@ -1,11 +1,6 @@
-body {
-    margin: 0;
-    padding: 0;
- }
-
- hr {
-    width: 95%;
-    border-top: 2px solid #100101;
-    opacity: 18%;
-
- }
+.container{
+   align-items: center;
+   justify-content: center;
+   margin-left: 2.5%;
+   margin-right: 2.5%;
+}

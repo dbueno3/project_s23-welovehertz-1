@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import {Link} from 'react-router-dom';
 import "../styles/navbar.css";
-import Searchbar from "./searchbar";
 import HomeLogo from '../pictures/home_logo.jpg'
 //import HomeIcon from '@mui/icons-material/Home';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import { Button } from "@mui/material";
-
-
+import SearchBar from "./SearchBar";
+import HousingData from "../Data.json"
 export default function Navbar(){
 
     const [openLinks, setOpenLinks] = useState(false);
@@ -26,7 +25,8 @@ export default function Navbar(){
                         <Link to="/CSE442-542/2023-Spring/cse-442h/register">Register</Link>
                         <Link to="/CSE442-542/2023-Spring/cse-442h/login">Login</Link>
                         <Link to="/CSE442-542/2023-Spring/cse-442h/contact-us">Contact Us</Link>
-                    </div>
+                    </div> 
+                    <SearchBar placeholder="Enter Housing Option" data ={HousingData}/> 
                 </div>
                 <div className="rightSide">
                         <Link to="/CSE442-542/2023-Spring/cse-442h/">Home</Link>

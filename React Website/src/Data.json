@@ -1,0 +1,47 @@
+[
+    
+    {
+        "id": "1", 
+        "name": "Fargo Complex"
+    },
+    { 
+        "id": 2,
+        "name": "Richmond Complex"
+    },
+    { 
+        "id": "3", 
+        "name": "Red Jacket Complex"
+    },
+    { 
+        "id": "4", 
+        "name": "Porter Complex" 
+    },
+    { 
+        "id": "5",
+        "name": "Wilkenson Complex" 
+    },
+    { 
+        "id": 6, 
+        "name": "South Lake Apartments" 
+    },
+    { 
+        "id": "7",
+        "name": "Hadley Village Apartments" 
+    },
+    {
+        "id":"8", 
+        "name": "Spaulding Complex" 
+    },
+    { 
+        "id": "9",
+        "name": "Governors Hall" 
+    },
+    { 
+        "id": "10",
+        "name":"Creekside East" 
+    },
+    { 
+        "id": "11", 
+        "name": "Creekside West"
+    }
+]

@@ -24,13 +24,18 @@ export default function Navbar(){
                     <div className="hiddenLinks">
                         <Link to="/CSE442-542/2023-Spring/cse-442h/">Home</Link>
                         <Link to="/CSE442-542/2023-Spring/cse-442h/contact-us">Contact Us</Link>
+                        <Link to="/CSE442-542/2023-Spring/cse-442h/profile">
+                            <img className="profile-image" src={profileIcon} />
+                        </Link>
                     </div>
                 </div>
                 <div className="rightSide">
                         <Link to="/CSE442-542/2023-Spring/cse-442h/">Home</Link>
                         <span className="logout">Logout</span>
                         <Link to="/CSE442-542/2023-Spring/cse-442h/contact-us">Contact Us</Link>
-                        <img className="profile-image" src={profileIcon} />
+                        <Link to="/CSE442-542/2023-Spring/cse-442h/profile">
+                            <img className="profile-image" src={profileIcon} />
+                        </Link>
                     <Button onClick={toggleNavbar}><ReorderIcon/></Button>
                 </div>
             </div>

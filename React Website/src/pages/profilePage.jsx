@@ -12,8 +12,13 @@ export default function ProfilePage () {
     const [favoriteList, setFavoriteList] = useState([]);
 
     useEffect(() => {
-        Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/profile.php', {
-
+        let cookie = document.cookie
+        let parsedCookie = cookie.substring(cookie.indexOf("currentUserCookie") + 18)
+        if (!(parsedCookie.indexOf(";") == -1)) {
+            parsedCookie = parsedCookie.substring(0, parsedCookie.indexOf(";"))
+        }
+        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/profile.php', {
+            id: parsedCookie,
         })
         .then(function (response) {
             const profileData = JSON.parse(response.data.substring(1, response.data.length-1))
@@ -28,7 +33,6 @@ export default function ProfilePage () {
                         img: "https://www.bhg.com/thmb/H9VV9JNnKl-H1faFXnPlQfNprYw=/1799x0/filters:no_upscale():strip_icc()/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg",
                 }])
             }
-            console.log(favoriteList)
         })
     }, []);
 

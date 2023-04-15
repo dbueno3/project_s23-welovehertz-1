@@ -16,8 +16,14 @@ export default function Header( props ) {
 
 
     useEffect(() => {
-        Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/unfavorite.php', {
-            id: id
+        let cookie = document.cookie
+        let parsedCookie = cookie.substring(cookie.indexOf("currentUserCookie") + 18)
+        if (!(parsedCookie.indexOf(";") == -1)) {
+            parsedCookie = parsedCookie.substring(0, parsedCookie.indexOf(";"))
+        }
+        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/unfavorite.php', {
+            id: id,
+            pid: parsedCookie,
         })
         .then(function(response){
             let headerData = response.data
@@ -32,8 +38,14 @@ export default function Header( props ) {
     }, [])
 
     const handleSubmission = (event) => { 
+        let cookie = document.cookie
+        let parsedCookie = cookie.substring(cookie.indexOf("currentUserCookie") + 18)
+        if (!(parsedCookie.indexOf(";") == -1)) {
+            parsedCookie = parsedCookie.substring(0, parsedCookie.indexOf(";"))
+        }
         Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/addFavorite.php', {
-            id: id
+            id: id,
+            pid: parsedCookie,
         })
         setIsFavorite(!isFavorite)
         //DO NOT GET RID OF CONSOLE.LOG, ITS FOR TESTING!

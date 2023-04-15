@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/navbar';
 import LoginNavbar from './components/loginNavbar'
 import Login from './pages/loginbar';
@@ -15,8 +15,15 @@ import Residential from './pages/residential';
 function App() {  
   const [isLoggedin, setIsLoggedin] = useState(false);
 
+  useEffect(() => {
+    const cookie = document.cookie
+    if (cookie.includes("currentUserCookie")) {
+      setIsLoggedin(true)
+    }
+  }, [])
+
   const handleLogin = () => {
-    setIsLoggedin(!isLoggedin);
+    setIsLoggedin(true);
   }
 
   return (

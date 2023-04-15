@@ -11,7 +11,9 @@ switch ($method) {
     case "POST":
         $user = json_decode(file_get_contents('php://input'));
         $resi_id = $user->id;
-        $sql = "SELECT favorite_list FROM users WHERE id=1";
+        $user_id = $user->pid;
+        echo $user_id;
+        $sql = "SELECT favorite_list FROM users WHERE id=$user_id";
         $param = $conn->prepare($sql);
         $param->execute();
         $data = substr(json_encode($param->fetchAll(PDO::FETCH_ASSOC)), 19, -3);
@@ -34,7 +36,7 @@ switch ($method) {
                 $result = implode(',', $data_array);
                 echo $result;
             }
-            $sql3 = "UPDATE users SET favorite_list='$result' WHERE id=1";
+            $sql3 = "UPDATE users SET favorite_list='$result' WHERE id=$user_id";
             $param3 = $conn->prepare($sql3);
             $param3->execute();
         }

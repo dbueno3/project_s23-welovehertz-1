@@ -2,20 +2,21 @@
     text-align: center;
     height: 80px;
     margin-left: 20%;
-    width: 300%;
+    width: 60%; /* changed from 300% */
     display: flex;
     justify-content: center;
-}
-
-.searchInputs {
+    flex-wrap: wrap; /* added this property */
+  }
+  
+  .searchInputs {
     margin-top: 25px;
     width: 60%;
     display: inline-flex;
     height: 30px;
     width: 100%;
-}
-
-.searchInputs input {
+  }
+  
+  .searchInputs input {
     background-color: beige;
     border: 0;
     border-radius: 5px;
@@ -26,9 +27,9 @@
     padding: 15px;
     height: 30;
     width: 200px;
-}
-
-.searchIcon {
+  }
+  
+  .searchIcon {
     height: 30px;
     width: 50px;
     border: 0;
@@ -39,45 +40,52 @@
     border: 2px solid #bbb;
     display: grid;
     place-items: center;
-}
-
-input:focus {
+  }
+  
+  input:focus {
     outline: none;
-}
-
-.searchIcon svg{
+  }
+  
+  .searchIcon svg {
     font-size: 35px;
-}
-.dataResults {
-    margin-top: 5px;
+  }
+  
+  .dataResults {
+    margin: 10px auto; /* changed margin property */
     width: 300px;
     height: 200px;
-    background-color: wheat;
-    box-shadow: rgba(0, 0,0, 0.35) 0px, 5px, 15px;
-    overflow: hidden;
+    background-color: rgb(227, 205, 165);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 11px; /* fixed box-shadow property */
+    overflow: auto;
     overflow-y: auto;
-}
-.dataResults::-webkit-scrollbar{display: none;}
-
-.dataResults .dataItem{
+    clear: both; /* added this property */
+  }
+  
+  .dataResults::-webkit-scrollbar {
+    display: ruby-base;
+  }
+  
+  .dataResults .dataItem {
     width: 100%;
     height: 50px;
     display: flex;
     align-items: center;
     color: black;
-}
-
-.dataItem p{
+  }
+  
+  .dataItem p {
     margin-left: 10px;
-}
-a {
+  }
+  
+  a {
     text-decoration: none;
-}
-
-a:hover{ 
+  }
+  
+  a:hover {
     background-color: lightgray;
-}
-.clearBtn {
+  }
+  
+  .clearBtn {
     cursor: pointer;
-
-}
+  }
+  

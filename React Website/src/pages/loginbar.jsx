@@ -1,7 +1,9 @@
 import React, {useState} from "react";
-import {Link} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import "../styles/login.css";
 import Axios from 'axios';
+import Homepage from "./homepage"
 
 export default function Login (props) {
     //Captures the email and password
@@ -57,16 +59,17 @@ export default function Login (props) {
 
     return (
         <>
+            {success && <Navigate to={""} />}
             <div className="login" >
                 <div className="login-form">
-                    <form className="login-inputs" onSubmit={handleSubmission}>
+                    <form className="login-inputs" onSubmit={handleSubmission} action={Homepage} method="post">
                         <label for="email">Email</label>
                         <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="Email" name="email" />
                         <label for="password">Password</label>
                         <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Password" name="password" required/>
                         <button>Login</button>
-                        {error && <div>{error}</div>}
-                        {success && <div>Login Success!</div> }
+                        {error && <div>{error} Login Failed</div>}
+                        {success && <div>Login Success! </div> }
                         <br></br>
                     </form>
                     <button className="register-button" ><Link to="/CSE442-542/2023-Spring/cse-442h/register">Don't Have An Account? Click Here</Link></button>

@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close'
 
 
+
 export default function Searchbar({placeholder, data} ){
     
     // Fetch the data from the db 
@@ -36,7 +37,7 @@ export default function Searchbar({placeholder, data} ){
                 <div className="searchInputs">
                     <input type="text" placeholder={placeholder} value={wordEntered} onChange={handleFilter} />  
                     <div className="searchIcon"> 
-                    {filterData.length === 0 ? (
+                    {filterData.length=== 0  ? (
                     <SearchIcon /> 
                     ) : (
                     <CloseIcon id="clearBtn" onClick={clearInput} />
@@ -45,9 +46,9 @@ export default function Searchbar({placeholder, data} ){
                 </div> 
                 {filterData.length !== 0 && (
                 <div className="dataResults">
-                    {filterData.slice(0,9).map((value, key)=>{
+                    {filterData.slice(0,11).map((value, key)=>{
                         return(
-                            <a className='dataItem' href='' target='_blank'>
+                            <a className='dataItem' href={value.link} >
                                 <p>{value.name}</p>
                             </a>
 

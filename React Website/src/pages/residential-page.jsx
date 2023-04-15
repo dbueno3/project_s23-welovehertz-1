@@ -4,15 +4,26 @@ import Amenities from '../residental-components/amenities/Amenities'
 import Header from '../residental-components/header/Header'
 import Ratings from '../residental-components/ratings/Ratings'
 import UserRatings from '../residental-components/userRatings/UserRatings'
-import {useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
+import ResiPrices from '../components/prices'
+import ResiAmenities from '../components/hasamenities'
+import '../styles/resident-page.css'
+
 
 export default function ResidentPage() {
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
+    const [prices, setPrices] = useState('');
+    const [amenities, setAmenities] = useState('');
+
+    const navigate = useNavigate();
+
     let { id } = useParams();
-    console.log("id: " + id);
 
     useEffect(() => {
+        if (id < 1 || id > 11 || isNaN(id)){
+            navigate(`/CSE442-542/2023-Spring/cse-442h/contact-us`)
+        }
         Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/residential.php', {
             id: id
         })
@@ -20,15 +31,16 @@ export default function ResidentPage() {
             const residentialData = JSON.parse(response.data.substring(3, response.data.length-2))
             setTitle(residentialData.residence)
             setLocation(residentialData.location)
-            console.log(residentialData)
+            setPrices(ResiPrices(residentialData))
+            setAmenities(ResiAmenities(residentialData))
         })
     }, []);
 
     return (
-        <div className="container">
-            <Header title={title} location={location}/>
+        <div className='container'>
+            <Header prices={prices} title={title} location={location}/>
             <hr />
-            <Amenities />
+            <Amenities amenities={amenities}/>
             <hr />
             <Ratings />
             <hr />

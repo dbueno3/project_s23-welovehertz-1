@@ -1,0 +1,61 @@
+[
+    
+    {
+        "id": "1", 
+        "name": "Fargo Complex",
+        "link":"https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/1"
+    },
+    { 
+        "id": 2,
+        "name": "Richmond Complex",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/2"
+    },
+    { 
+        "id": "3", 
+        "name": "Red Jacket Complex",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/3"
+    },
+    { 
+        "id": "4", 
+        "name": "Porter Complex",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/4"
+
+    },
+    { 
+        "id": "5",
+        "name": "Wilkenson Complex",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/5"
+    
+    },
+    { 
+        "id": 6, 
+        "name": "South Lake Apartments",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/6"
+    },
+    { 
+        "id": "7",
+        "name": "Hadley Village Apartments",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/7"
+    },
+    {
+        "id":"8", 
+        "name": "Spaulding Complex",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/8"
+    
+    },
+    { 
+        "id": "9",
+        "name": "Governors Hall",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/9"
+    },
+    { 
+        "id": "10",
+        "name":"Creekside East",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/10"
+    },
+    { 
+        "id": "11", 
+        "name": "Creekside West",
+        "link": "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/11"
+    }
+]

@@ -1,9 +1,11 @@
 import React, {useState} from "react";
-import {Link} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import "../styles/login.css";
 import Axios from 'axios';
+import Homepage from "./homepage"
 
-export default function Login () {
+export default function Login (props) {
     //Captures the email and password
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,8 +16,8 @@ export default function Login () {
     const handleSubmission = (event) => {
         //This prevents the page from reloading and losing our current state
         event.preventDefault();
-        console.log(email)
-        console.log(password)
+        // console.log(email)
+        // console.log(password)
 
         Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/login.php', {
           email: email,
@@ -29,6 +31,16 @@ export default function Login () {
           setError(error.message);
           setSuccess(false);
         });
+
+        setTimeout(function(){
+            const cookie = document.cookie
+            if (cookie.includes("currentUserCookie")) {
+                props.handleLogin();
+                console.log("LOGIN SUCCESS: COOKIE")
+            } else {
+                console.log("LOGIN FAILED: NO COOKIE")
+            }
+        }, 1000);
     }   
     const buttonStyle = {
         backgroundColor: 'beige',
@@ -47,20 +59,20 @@ export default function Login () {
 
     return (
         <>
+            {success && <Navigate to={""} />}
             <div className="login" >
                 <div className="login-form">
-                    <form className="login-inputs" onSubmit={handleSubmission}>
+                    <form className="login-inputs" onSubmit={handleSubmission} action={Homepage} method="post">
                         <label for="email">Email</label>
                         <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="Email" name="email" />
                         <label for="password">Password</label>
                         <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Password" name="password" required/>
                         <button>Login</button>
-                        {error && <div>{error}</div>}
-                        {success && <div>Login Success!</div>}
+                        {error && <div>{error} Login Failed</div>}
+                        {success && <div>Login Success! </div> }
                         <br></br>
-                        <button className="redirect-to-home" style={buttonStyle}> <Link to="/CSE442-542/2023-Spring/cse-442h/">BACK TO THE HOMEPAGE</Link></button>
                     </form>
-                    <button className="register-button" ><Link to="/register">Don't Have An Account? Click Here</Link></button>
+                    <button className="register-button" ><Link to="/CSE442-542/2023-Spring/cse-442h/register">Don't Have An Account? Click Here</Link></button>
                 </div>
             </div>
         </>

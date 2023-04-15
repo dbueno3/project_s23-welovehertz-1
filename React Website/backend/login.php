@@ -8,23 +8,27 @@ $conn = $db->connect();
 
 session_start();
 
-function getUser($con, $email, $password) {
+function getUser($con, $email, $password)
+{
     $sql = "SELECT * FROM users WHERE email='$email'";
     $stmt = $con->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if ($result) {
         $hashedPW = $result[0]['password'];
-        // echo $hashedPW . "\n";
         if (password_verify($password, $hashedPW)) {
-	    echo "Account Verified" . "\n";
+            //Cookie is for user and the value is the email. Cookie expires in one day (86400 == 1 day) 
+            //and is accessable across the whole website
+            $cookie_name = 'currentUserCookie';
+            setcookie($cookie_name, $result[0]['id'], time() + 86400, "/");
+            echo "Account Verified" . "\n";
             return 1;
         } else {
-	    echo "Wrong Password" . "\n";
+            echo "Wrong Password" . "\n";
             return 0;
         }
     } else {
-	echo "No Account With That Email" . "\n";
+        echo "No Account With That Email" . "\n";
         return 0;
     }
 }
@@ -42,7 +46,16 @@ switch ($method) {
             exit();
         }
         $_SESSION['email'] = $email;
+
         exit();
 }
 
 ?>;
+
+<!-- IGNORE THIS BELOW -->
+<!-- if(!isset($_COOKIE[$cookie_name])) {
+                echo "Cookie named '" . $cookie_name . "' is not set!";
+            } else {
+                echo "Cookie '" . $cookie_name . "' is set!<br>";
+                echo "Value is: " . $_COOKIE[$cookie_name];
+            } -->

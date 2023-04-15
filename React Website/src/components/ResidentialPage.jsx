@@ -1,5 +1,5 @@
 import React from "react";
-import Searchbar from "./SearchBar";
+import Searchbar from "./searchbar";
 import { Link } from "react-router-dom";
 
 class DynamicPage extends React.Component(){ 

@@ -5,7 +5,7 @@ import HomeLogo from '../pictures/home_logo.jpg'
 //import HomeIcon from '@mui/icons-material/Home';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import { Button } from "@mui/material";
-import SearchBar from "./SearchBar";
+import SearchBar from "./searchbar";
 import HousingData from "../Data.json"
 export default function Navbar(){
 

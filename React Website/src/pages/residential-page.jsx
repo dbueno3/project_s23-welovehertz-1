@@ -20,8 +20,6 @@ export default function ResidentPage() {
 
     let { id } = useParams();
 
-    console.log(id)
-
     useEffect(() => {
         if (id < 1 || id > 11 || isNaN(id)){
             navigate(`/CSE442-542/2023-Spring/cse-442h/contact-us`)

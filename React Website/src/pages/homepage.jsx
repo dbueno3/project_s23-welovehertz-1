@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import BackGround from '../pictures/background.jpg';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';

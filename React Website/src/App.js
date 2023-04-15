@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/navbar';
 import LoginNavbar from './components/loginNavbar'
 import Login from './pages/loginbar';
@@ -11,27 +11,21 @@ import ResidentPage from './pages/residential-page';
 import ContactUs from './pages/contact';
 import ProfilePage from './pages/profilePage';
 import Residential from './pages/residential';
-import Axios from "axios";
 
 function App() {  
-  // const [isLoggedin, setIsLoggedin] = useState();
+  const [isLoggedin, setIsLoggedin] = useState(false);
 
-  // useEffect(() => {
-  //   Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/profile.php', {
-
-  // })
-  // .then(function (response) {
-  // })
-
-  // }, [])
+  const handleLogin = () => {
+    setIsLoggedin(!isLoggedin);
+  }
 
   return (
     <>
       <Router>
-          <Navbar />
+          {isLoggedin ? <LoginNavbar /> : <Navbar />}
           <Routes>
             <Route path='/CSE442-542/2023-Spring/cse-442h/' element={<Homepage />} />
-            <Route path='/CSE442-542/2023-Spring/cse-442h/login' element={<Login />} />
+            <Route path='/CSE442-542/2023-Spring/cse-442h/login' element={<Login handleLogin={handleLogin}/>} />
             <Route path='/CSE442-542/2023-Spring/cse-442h/register' element={<Box />} />
             <Route path='/CSE442-542/2023-Spring/cse-442h/:id' element={<ResidentPage/>} />
             <Route path='/CSE442-542/2023-Spring/cse-442h/residential' element={<Residential/>} />

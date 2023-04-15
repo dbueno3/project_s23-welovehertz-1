@@ -11,14 +11,6 @@ const Homepage = () => {
         residence: ''
     }]);
 
-    useEffect(() => {
-        const cookie = document.cookie
-        if (cookie.includes("currentUserCookie")) {
-            let parsedCookie = cookie.substring(cookie.indexOf("currentUserCookie") + 18)
-            parsedCookie = parsedCookie.substring(0, parsedCookie.indexOf(";"))
-            console.log(parsedCookie)
-        } 
-    }, [])
 
     useEffect(() => {
         Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/listingcard.php', {

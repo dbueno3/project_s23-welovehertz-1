@@ -19,7 +19,7 @@ switch ($method) {
         $data = substr(json_encode($param->fetchAll(PDO::FETCH_ASSOC)), 19, -3);
         if (strlen($data) == 0) {
             echo "First in array";
-            $sql2 = "UPDATE users SET favorite_list='$resi_id' WHERE id=1";
+            $sql2 = "UPDATE users SET favorite_list='$resi_id' WHERE id=$user_id";
             $param2 = $conn->prepare($sql2);
             $param2->execute();
         } else {

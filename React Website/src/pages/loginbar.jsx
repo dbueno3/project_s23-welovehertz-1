@@ -56,9 +56,8 @@ export default function Login () {
                         <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Password" name="password" required/>
                         <button>Login</button>
                         {error && <div>{error}</div>}
-                        {success && <div>Login Success!</div>}
+                        {success && <div>Login Success!</div> }
                         <br></br>
-                        <button className="redirect-to-home" style={buttonStyle}> <Link to="/CSE442-542/2023-Spring/cse-442h/">BACK TO THE HOMEPAGE</Link></button>
                     </form>
                     <button className="register-button" ><Link to="/register">Don't Have An Account? Click Here</Link></button>
                 </div>

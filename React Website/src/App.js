@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/navbar';
 import Login from './pages/loginbar';
 import Homepage from './pages/homepage';
 import Box from './pages/RegistrationPage';
 import Footer from './components/footer';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, useLocation} from 'react-router-dom';
 import './App.css';
 import ResidentPage from './pages/residential-page';
 import ContactUs from './pages/contact';
 import ProfilePage from './pages/profilePage';
 import Residential from './pages/residential';
 
-function App() {
+function App() {  
+
   return (
     <>
       <Router>

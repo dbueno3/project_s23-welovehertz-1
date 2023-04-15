@@ -1,2 +1,3 @@
-FallbackResource ./index.html
 AddType image/jpeg .jpg
+AddType image/png .png
+FallbackResource ./index.html

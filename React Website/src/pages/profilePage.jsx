@@ -12,11 +12,15 @@ export default function ProfilePage () {
     const [favoriteList, setFavoriteList] = useState([]);
 
     useEffect(() => {
-        Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/profile.php', {
-
+        let cookie = document.cookie
+        let parsedCookie = cookie.substring(cookie.indexOf("currentUserCookie") + 18)
+        if (!(parsedCookie.indexOf(";") == -1)) {
+            parsedCookie = parsedCookie.substring(0, parsedCookie.indexOf(";"))
+        }
+        Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/profile.php', {
+            id: parsedCookie,
         })
         .then(function (response) {
-            console.log(response.data)
             const profileData = JSON.parse(response.data.substring(1, response.data.length-1))
             setFirstName(profileData.first_name)
             setLastName(profileData.last_name)

@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {Link} from 'react-router-dom';
-import "../styles/navbar.css";
+import "../styles/loginNavbar.css";
 import HomeLogo from '../pictures/home_logo.jpg'
 //import HomeIcon from '@mui/icons-material/Home';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import { Button } from "@mui/material";
-import SearchBar from "./SearchBar";
-import HousingData from "../Data.json"
+import profileIcon from "../pictures/profile-icon.png"
+
 export default function Navbar(){
 
     const [openLinks, setOpenLinks] = useState(false);
@@ -15,6 +15,7 @@ export default function Navbar(){
         setOpenLinks(!openLinks)
     };
 
+
     return(
         <>
             <div className="navbar">
@@ -22,17 +23,19 @@ export default function Navbar(){
                     <img src={HomeLogo} alt="" />
                     <div className="hiddenLinks">
                         <Link to="/CSE442-542/2023-Spring/cse-442h/">Home</Link>
-                        <Link to="/CSE442-542/2023-Spring/cse-442h/register">Register</Link>
-                        <Link to="/CSE442-542/2023-Spring/cse-442h/login">Login</Link>
                         <Link to="/CSE442-542/2023-Spring/cse-442h/contact-us">Contact Us</Link>
-                    </div> 
-                    <SearchBar placeholder="Enter Housing Option" data ={HousingData}/> 
+                        <Link to="/CSE442-542/2023-Spring/cse-442h/profile">
+                            <img className="profile-image" src={profileIcon} />
+                        </Link>
+                    </div>
                 </div>
                 <div className="rightSide">
                         <Link to="/CSE442-542/2023-Spring/cse-442h/">Home</Link>
-                        <Link to="/CSE442-542/2023-Spring/cse-442h/register">Register</Link>
-                        <Link to="/CSE442-542/2023-Spring/cse-442h/login">Login</Link>
+                        <span className="logout">Logout</span>
                         <Link to="/CSE442-542/2023-Spring/cse-442h/contact-us">Contact Us</Link>
+                        <Link to="/CSE442-542/2023-Spring/cse-442h/profile">
+                            <img className="profile-image" src={profileIcon} />
+                        </Link>
                     <Button onClick={toggleNavbar}><ReorderIcon/></Button>
                 </div>
             </div>

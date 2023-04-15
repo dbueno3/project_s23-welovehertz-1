@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import "../styles/login.css";
 import Axios from 'axios';
 
-export default function Login () {
+export default function Login (props) {
     //Captures the email and password
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -29,6 +29,16 @@ export default function Login () {
           setError(error.message);
           setSuccess(false);
         });
+
+        setTimeout(function(){
+            const cookie = document.cookie
+            if (cookie.includes("currentUserCookie")) {
+                props.handleLogin();
+                console.log("LOGIN SUCCESS: COOKIE")
+            } else {
+                console.log("LOGIN FAILED: NO COOKIE")
+            }
+        }, 1000);
     }   
     const buttonStyle = {
         backgroundColor: 'beige',
@@ -59,7 +69,7 @@ export default function Login () {
                         {success && <div>Login Success!</div> }
                         <br></br>
                     </form>
-                    <button className="register-button" ><Link to="/register">Don't Have An Account? Click Here</Link></button>
+                    <button className="register-button" ><Link to="/CSE442-542/2023-Spring/cse-442h/register">Don't Have An Account? Click Here</Link></button>
                 </div>
             </div>
         </>

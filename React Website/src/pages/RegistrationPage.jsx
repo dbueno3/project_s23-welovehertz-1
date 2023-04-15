@@ -2,6 +2,7 @@ import '../styles/RegistrationPage.css';
 import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 import Axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ export default function Register() {
         confirm_password: '',
         submit: ''
     });
-
+    const navigate = useNavigate();
     const data = {
         first_name: first_name,
         last_name: last_name,
@@ -26,7 +27,6 @@ export default function Register() {
         password: password,
         confirm_password: confirm_password,
     }
-
     const handleSubmission = (event) => {
         event.preventDefault();
         console.log(data)
@@ -44,7 +44,6 @@ export default function Register() {
                     setErrors({ ...allErrors, submit: 'Unable to create account, please check all fields' });
                     setSuccess(false);
                 } else {
-                    setSuccess(true);
                     setErrors({
                         first_name: '',
                         last_name: '',
@@ -53,6 +52,8 @@ export default function Register() {
                         confirmPassword: '',
                         submit: ''
                     });
+                    setSuccess(true);
+                    navigate('/CSE442-542/2023-Spring/cse-442h/login');
                 }
             })
             .catch(error => {
@@ -84,11 +85,11 @@ export default function Register() {
                         <label htmlFor="confirm_password">Confirm Password</label>{errors.confirm_password && <div className="error-message">{errors.confirm_password}</div>}
                         <input value={confirm_password} onChange={(event) => setConfirmPassword(event.target.value)} type="password" placeholder="Confirm Password" name="confirmPassword" required />
 
-                        <button >Register</button>
+                        <button>Register</button>
                         {errors.submit && !success && <div className="error-message">{errors.submit}</div>}
                         {success && <div>Account Creation Success!</div>}
                     </form>
-                    <button className="create-account-button" ><Link to="https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/login">Have An Account? Click Here</Link></button>
+                    <button className="create-account-button" ><Link to="/CSE442-542/2023-Spring/cse-442h/login">Have An Account? Click Here</Link></button>
                 </div>
             </div>
         </>

@@ -1,17 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/navbar';
+import LoginNavbar from './components/loginNavbar'
 import Login from './pages/loginbar';
 import Homepage from './pages/homepage';
 import Box from './pages/RegistrationPage';
 import Footer from './components/footer';
-import {BrowserRouter as Router, Route, Routes, useLocation} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
 import ResidentPage from './pages/residential-page';
 import ContactUs from './pages/contact';
 import ProfilePage from './pages/profilePage';
 import Residential from './pages/residential';
+import Axios from "axios";
 
 function App() {  
+  // const [isLoggedin, setIsLoggedin] = useState();
+
+  // useEffect(() => {
+  //   Axios.get('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/profile.php', {
+
+  // })
+  // .then(function (response) {
+  // })
+
+  // }, [])
 
   return (
     <>

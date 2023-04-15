@@ -19,8 +19,8 @@ function getUser($con, $email, $password)
         if (password_verify($password, $hashedPW)) {
             //Cookie is for user and the value is the email. Cookie expires in one day (86400 == 1 day) 
             //and is accessable across the whole website
-            $cookie_name = 'user';
-            setcookie($cookie_name, $result[0]['email'], time() + 86400, "/");
+            $cookie_name = 'currentUserCookie';
+            setcookie($cookie_name, $result[0]['id'], time() + 86400, "/");
             echo "Account Verified" . "\n";
             return 1;
         } else {

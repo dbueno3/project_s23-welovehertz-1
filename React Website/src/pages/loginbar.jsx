@@ -60,7 +60,7 @@ export default function Login () {
                         <br></br>
                         <button className="redirect-to-home" style={buttonStyle}> <Link to="/CSE442-542/2023-Spring/cse-442h/">BACK TO THE HOMEPAGE</Link></button>
                     </form>
-                    <button className="register-button" ><Link to="/register">Don't Have An Account? Click Here</Link></button>
+                    <button className="register-button" ><Link to="/CSE442-542/2023-Spring/cse-442h/register">Don't Have An Account? Click Here</Link></button>
                 </div>
             </div>
         </>

@@ -53,7 +53,7 @@ export default function Register() {
                         submit: ''
                     });
                     setSuccess(true);
-                    navigate('/login');
+                    navigate('/CSE442-542/2023-Spring/cse-442h/login');
                 }
             })
             .catch(error => {
@@ -89,7 +89,7 @@ export default function Register() {
                         {errors.submit && !success && <div className="error-message">{errors.submit}</div>}
                         {success && <div>Account Creation Success!</div>}
                     </form>
-                    <button className="create-account-button" ><Link to="/login">Have An Account? Click Here</Link></button>
+                    <button className="create-account-button" ><Link to="/CSE442-542/2023-Spring/cse-442h/login">Have An Account? Click Here</Link></button>
                 </div>
             </div>
         </>

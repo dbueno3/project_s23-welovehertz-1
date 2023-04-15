@@ -4,19 +4,6 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import '../styles/homepage.css'
 import * as React from 'react';
-import ResidentPage from './residential-page';
-
-// import porter from '../pictures/porter.jpg';
-// import wilkenson from '../pictures/wilkeson.jpg';
-// import gov from '../pictures/governors.jpg';
-// import fargo from '../pictures/fargo.jpg';
-// import richmond from '../pictures/richmond.jpg';
-// import redjacket from '../pictures/red.jpg';
-// import southlake from '../pictures/south.jpg';
-// import hadley from '../pictures/hadley.jpg'
-// import spaulding from '../pictures/spaulding.jpg'
-// import creekside from '../pictures/creekside.jpg'
-
 
 const Homepage = () => {
     const [listings, setListings] = useState([{
@@ -56,7 +43,7 @@ const Homepage = () => {
             <div className='listings'>
                 {listings.map(listing => (
                     <div key={listing.id} className='listing-card' onClick={() => handleListingClick(listing.id)}>
-                        <img src={`../2023-Spring/cse-442h/pictures/${listing.residence.split(" ")[0].toLowerCase()}.jpg`} alt={listing.residence} />
+                        <img src={`/CSE442-542/2023-Spring/cse-442h/pictures/${listing.residence.split(" ")[0].toLowerCase()}.jpg`} alt={listing.residence} />
                         <h2>{listing.residence}</h2>
                     </div>
                 ))}

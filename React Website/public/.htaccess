@@ -1,1 +1,2 @@
 FallbackResource ./index.html
+AddType image/jpeg .jpg

@@ -28,7 +28,8 @@ export default function ResidentPage() {
             id: id
         })
         .then(function (response) {
-            const residentialData = JSON.parse(response.data.substring(3, response.data.length-2))
+
+            const residentialData = JSON.parse(response.data.split("[")[1].split("]")[0])
             setTitle(residentialData.residence)
             setLocation(residentialData.location)
             setPrices(ResiPrices(residentialData))

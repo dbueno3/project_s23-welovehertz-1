@@ -4,6 +4,8 @@ import "../styles/loginNavbar.css";
 import HomeLogo from '../pictures/home_logo.jpg'
 //import HomeIcon from '@mui/icons-material/Home';
 import ReorderIcon from '@mui/icons-material/Reorder';
+import SearchBar from "./searchbar";
+import HousingData from "../Data.json"
 import { Button } from "@mui/material";
 import profileIcon from "../pictures/profile-icon.png"
 
@@ -28,6 +30,7 @@ export default function Navbar(){
                             <img className="profile-image" src={profileIcon} />
                         </Link>
                     </div>
+                    <SearchBar placeholder="Enter Housing Option" data ={HousingData}/> 
                 </div>
                 <div className="rightSide">
                         <Link to="/CSE442-542/2023-Spring/cse-442h/">Home</Link>

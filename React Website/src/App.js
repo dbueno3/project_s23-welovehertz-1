@@ -29,7 +29,7 @@ function App() {
   return (
     <>
       <Router>
-          {isLoggedin ? <LoginNavbar /> : <Navbar />}
+          {isLoggedin ? <LoginNavbar/> : <Navbar/>}
           <Routes>
             <Route path='/CSE442-542/2023-Spring/cse-442h/' element={<Homepage />} />
             <Route path='/CSE442-542/2023-Spring/cse-442h/login' element={<Login handleLogin={handleLogin}/>} />

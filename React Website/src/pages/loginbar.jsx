@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import "../styles/login.css";
 import Axios from 'axios';
 import Homepage from "./homepage"
@@ -9,7 +8,7 @@ export default function Login (props) {
     //Captures the email and password
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
+    const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
     const navigate = useNavigate();
 
@@ -18,27 +17,28 @@ export default function Login (props) {
         event.preventDefault();
 
         Axios.post('https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442h/backend/login.php', {
-
+            
             email: email,
             password: password,
         })
             .then((response) => {
-                if (response.status === 200) {
-                    setError(false)
+                if (response.status === 200 && response.data.split('\n')[1] === "Account Verified" ) {
+                    setError(false)                    
                     setSuccess(true);
                     navigate("/CSE442-542/2023-Spring/cse-442h/");
                 }
-                else {
-                    setError(`Error: ${response.status} - ${response.data.message}`);
-                    setSuccess(false);
+                else{ 
+                    setError(`Error: ${response.status}`);
+                    setSuccess(false)
+                    setError(true)
                 }
-        })
+            })
             .catch((error) => {
-          setError(true);
-          setSuccess(false);
-            });
-    }  
 
+                setError(true);
+                setSuccess(false);
+        });
+    }  
     return (
         <>
             <div className="login" >
@@ -49,9 +49,8 @@ export default function Login (props) {
                         <label for="password">Password</label>
                         <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Password" name="password" required/>
                         <button>Login</button>
-                        {error !== false && <div>{error} Login Failed</div>}
-                        {success && navigate("/CSE442-542/2023-Spring/cse-442h/") && <div>Login Success! </div>}
-                        <br></br>
+                        {success && <div>Login Success! </div>}
+                        {error !== false && <div>{error}</div>}
                     </form>
                     <button className="register-button" ><Link to="/CSE442-542/2023-Spring/cse-442h/register">Don't Have An Account? Click Here</Link></button>
                 </div>

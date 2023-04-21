@@ -30,6 +30,7 @@ export default function Login (props) {
           setSuccess(false);
         });
 
+        //Fixed navbar bug
         setTimeout(function(){
             const cookie = document.cookie
             if (cookie.includes("currentUserCookie")) {
